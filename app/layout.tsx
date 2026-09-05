@@ -7,14 +7,14 @@ const geistSans = Geist({ subsets: ["latin"], variable: "--font-geist-sans" })
 const geistMono = Geist_Mono({ subsets: ["latin"], variable: "--font-geist-mono" })
 
 export const metadata: Metadata = {
-  title: "Nuestras Finanzas",
-  description: "Finanzas personales compartidas en pareja",
+  title: "FinanzApp",
+  description: "Gestiona tus finanzas personales de forma sencilla",
   generator: "v0.app",
   manifest: "/manifest.json",
   appleWebApp: {
     capable: true,
     statusBarStyle: "black-translucent",
-    title: "Nuestras Finanzas",
+    title: "FinanzApp",
   },
 }
 

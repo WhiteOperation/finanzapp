@@ -12,6 +12,7 @@ import { ResumenMes } from "@/components/resumen-mes"
 import { CalendarioMes } from "@/components/calendario-mes"
 import { DetalleDia } from "@/components/detalle-dia"
 import { ModalAgregar } from "@/components/modal-agregar"
+import { Logo } from "@/components/logo"
 
 const supabase = createClient()
 
@@ -102,9 +103,11 @@ export function AppFinanzas() {
 
   return (
     <main className="mx-auto min-h-dvh w-full max-w-md px-4 pb-28 pt-6">
-      <header className="mb-5">
-        <p className="text-sm text-muted-foreground">Finanzas en pareja</p>
-        <h1 className="text-2xl font-semibold tracking-tight text-foreground">Nuestras Finanzas</h1>
+      <header className="mb-5 flex items-center gap-3">
+        <Logo />
+        <h1 className="text-2xl font-semibold tracking-tight text-foreground">
+          Finanz<span className="text-primary">App</span>
+        </h1>
       </header>
 
       <div className="space-y-4">

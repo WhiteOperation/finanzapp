@@ -1,7 +1,7 @@
 {
-  "name": "Nuestras Finanzas",
-  "short_name": "Finanzas",
-  "description": "Finanzas personales compartidas en pareja",
+  "name": "FinanzApp",
+  "short_name": "FinanzApp",
+  "description": "Gestiona tus finanzas personales de forma sencilla",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#1a1d24",
