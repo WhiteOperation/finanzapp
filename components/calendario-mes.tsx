@@ -68,11 +68,13 @@ export function CalendarioMes({
 
       <div className="grid grid-cols-7 gap-1">
         {celdas.map((dia, i) => {
-          if (dia === null) return <div key={i} className="aspect-square" />
+          if (dia === null) return <div key={i} className="min-h-14" />
           const key = `${year}-${String(month + 1).padStart(2, "0")}-${String(dia).padStart(2, "0")}`
           const balance = balanceDia(dia)
           const esHoy = key === hoyKey
           const seleccionado = key === diaSeleccionado
+          const positivo = balance !== null && balance > 0
+          const negativo = balance !== null && balance < 0
 
           return (
             <button
@@ -80,10 +82,14 @@ export function CalendarioMes({
               type="button"
               onClick={() => onSeleccionarDia(dia)}
               className={cn(
-                "flex aspect-square flex-col items-center justify-center gap-0.5 rounded-xl border text-sm transition-colors",
+                "flex min-h-14 flex-col items-center justify-start gap-1 rounded-xl border px-0.5 pt-1.5 pb-1 transition-colors",
                 seleccionado
                   ? "border-primary bg-primary/15"
-                  : "border-transparent hover:bg-accent",
+                  : cn(
+                      "border-transparent hover:bg-accent",
+                      positivo && "bg-success/10",
+                      negativo && "bg-destructive/10",
+                    ),
               )}
             >
               <span
@@ -94,15 +100,17 @@ export function CalendarioMes({
               >
                 {dia}
               </span>
-              {balance !== null && (
+              {balance !== null ? (
                 <span
                   className={cn(
-                    "font-mono text-[0.6rem] font-medium leading-none tabular-nums",
-                    balance > 0 ? "text-success" : balance < 0 ? "text-destructive" : "text-muted-foreground",
+                    "font-mono text-[0.62rem] font-semibold leading-none tabular-nums",
+                    positivo ? "text-success" : negativo ? "text-destructive" : "text-muted-foreground",
                   )}
                 >
                   {formatMonedaCorta(balance)}
                 </span>
+              ) : (
+                <span className="text-[0.62rem] leading-none text-muted-foreground/30">·</span>
               )}
             </button>
           )
